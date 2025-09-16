@@ -1,0 +1,133 @@
+/* Contenedor principal */
+.registrate-wrapper {
+  background-color: #f4f4f4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* NAV */
+.registrate-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+  width: 100%;
+  background-color: #111;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.registrate-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.registrate-logo img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.registrate-menu {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.registrate-menu li a {
+  text-decoration: none;
+  color: #f1ebeb;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.registrate-menu li a:hover {
+  background-color: #f1ebeb;
+  color: #111;
+}
+
+/* FORMULARIO */
+.registrate-form-container {
+  background-color: #0a0a0a;
+  max-width: 450px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.registrate-img {
+  display: block;
+  margin: 0 auto 20px;
+  max-width: 200px;
+  border-radius: 8px;
+}
+
+.registrate-title {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 10px;
+}
+
+.registrate-label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.registrate-input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.registrate-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #fff;
+  background-color: #f0f8ff;
+  color: #000;
+}
+
+.registrate-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: #111;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.registrate-button:hover {
+  background: #333;
+  transform: scale(1.02);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .registrate-form-container {
+    padding: 20px;
+  }
+  .registrate-button {
+    font-size: 14px;
+  }
+}

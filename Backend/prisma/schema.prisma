@@ -1,0 +1,89 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./travel_safeling.db"
+}
+
+model ruta {
+  Id_ruta Int @id @default(autoincrement())
+  Placas String
+  Hora_Salida DateTime @default(now())
+  Hora_Entrada DateTime @default(now())
+  Id_usuario Int
+  usuario usuarios @relation(fields: [Id_usuario], references: [id_usuario])
+  asesor_ruta asesor_ruta[] // Added opposite relation field
+
+  ruta_servicio ruta_servicio[]
+}
+
+model asesor_ruta{
+  Id_asesor  Int @id @default(autoincrement())
+  Nombre String
+  Apellido String
+  Telefono Int
+  Id_ruta Int
+  ruta ruta @relation(fields: [Id_ruta], references: [Id_ruta])
+}
+
+model usuarios {
+  id_usuario Int @id @default(autoincrement())
+  Tip_usuario String
+  Nom_completo String
+  direccion String
+  Correo String
+  Telefono Int
+  Id_empresa Int
+  empresa empresa @relation(fields: [Id_empresa], references: [id_empresa])
+  ruta ruta[]
+}
+
+model patrocinador {
+  Id_patrocina Int @id @default(autoincrement())
+  Nombre String
+  Monto_pago Int
+  Metodo_pago String
+  empresa empresa @relation(fields: [Id_patrocina], references: [id_empresa])
+}
+
+model empresa {
+  id_empresa Int @id @default(autoincrement())
+  Tip_empresa String 
+  Nom_empresa String
+  Direccion String
+  Correo String
+  usuarios usuarios[] // Opposite relation field added
+
+  patrocinador patrocinador[]
+}  
+
+model ruta_servicio {
+  Id_ruta_servicio Int @id @default(autoincrement())
+  Id_ruta Int
+  Id_servicio Int
+  ruta ruta @relation(fields: [Id_ruta], references: [Id_ruta])
+  servicio servicio @relation(fields: [Id_servicio], references: [Id_servicio])
+}
+
+model servicio {
+  Id_servicio Int @id @default(autoincrement())
+  Direccion String
+  ruta_servicio ruta_servicio[]
+  parada parada[]
+}
+
+model parada {
+  Id_parada Int @id @default(autoincrement())
+  Direccion String
+  Barrio String
+  servicio servicio @relation(fields: [Id_parada], references: [Id_servicio])
+}

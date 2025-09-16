@@ -1,0 +1,249 @@
+/* Estilos para Index */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+  color: #ebe3e3;
+}
+
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+  background-color: #111;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+nav .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.destacado {
+  background-color: #f7f6f6;
+  color: rgb(22, 19, 19);
+  font-size: 18px;
+  text-align: center;
+  padding: 12px 0;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
+nav .logo img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #f1ebeb;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: #0a0a0a;
+  color: #111;
+}
+
+
+.hero {
+  background: linear-gradient(135deg, #0f0f0f, #000000);
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 30px;
+}
+
+.hero-content {
+  flex: 1 1 40%;
+}
+
+.hero-content h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 18px;
+}
+
+.hero-img {
+  flex: 1 1 50%;
+  text-align: center;
+}
+
+.hero-img img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.info {
+  padding: 40px 30px;
+  background-color: rgb(22, 21, 21);
+  text-align: center;
+}
+
+.info h2 {
+  color: #f6faf6;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.info p {
+  font-size: 16px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.footer {
+  background: #111;
+  color: #fff;
+  padding: 40px 20px 20px 20px;
+  font-size: 14px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-col {
+  flex: 1 1 250px;
+  margin-bottom: 20px;
+}
+
+.footer-col h4 {
+  color: #f3f8f7;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.footer-col a {
+  color: #434444;
+  text-decoration: none;
+}
+
+.footer-col a:hover {
+  text-decoration: underline;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #f7f1f1;
+  padding-top: 10px;
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+.logo img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;  /* para que sea circular */
+  object-fit: cover;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  margin-right: 10px;
+}
+/* Estilo para los aliados */
+.aliados {
+  background-color: #f4f4f4;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.aliados h2 {
+  color: #151616;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.aliados-logos {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.aliados-logos img {
+  width: 120px;
+  height: auto;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.aliados-logos img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+
+/* Estilo para sección de NOSOTROS */
+
+.info {
+  padding: 40px 30px;
+  background-color: #ffffff;
+  color: #333;
+  line-height: 1.7;
+  font-size: 17px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.info h2 {
+  color: #0f1111;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+.info p {
+  font-size: 18px;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Footer minimal para esta página */
+.footer {
+  background: #111;
+  color: #fff;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+
