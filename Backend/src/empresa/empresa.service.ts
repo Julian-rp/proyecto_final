@@ -11,10 +11,15 @@ export class EmpresaService {
     private prisma: PrismaService 
   ) {}
 
-  create(body: any) {
-    return this.prisma.empresa.create({
-      data: body
-    })
+  async create(body: any) {
+    try {
+      return await this.prisma.empresa.create({
+        data: body
+      });
+    } catch (error) {
+      console.error('Error creating empresa:', error);
+      throw new Error('Error al crear la empresa: ' + error.message);
+    }
   }
 
   findAll() {
@@ -30,10 +35,18 @@ export class EmpresaService {
   }
 
   async update(id: number, body: any) {
-    return await this.prisma.empresa.update({
-      where: { id_empresa: id },
-      data: body
-    });
+    try {
+      // Filtrar campos que no se pueden actualizar
+      const { id_empresa, usuarios, patrocinador, ...updateData } = body;
+      
+      return await this.prisma.empresa.update({
+        where: { id_empresa: id },
+        data: updateData
+      });
+    } catch (error) {
+      console.error('Error updating empresa:', error);
+      throw new Error('Error al actualizar la empresa: ' + error.message);
+    }
   }
 
   async remove(id: number) {

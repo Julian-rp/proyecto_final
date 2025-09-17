@@ -10,8 +10,20 @@ export class UsuariosController {
   constructor(private readonly usuariosService: UsuariosService) {}
 
   @Post()
-  create(@Body() body:any) {
-    return this.usuariosService.create(body);
+  async create(@Body() body:any) {
+    try {
+      const result = await this.usuariosService.create(body);
+      return {
+        exito: true,
+        mensaje: 'Usuario creado correctamente',
+        data: result
+      };
+    } catch (error) {
+      return {
+        exito: false,
+        mensaje: error.message
+      };
+    }
   }
 
   @Get()
@@ -25,12 +37,20 @@ export class UsuariosController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() body:any) {
-    return {
-      "exito" : true,
-      "mensaje" : "Actualizado correctamente ",
-      "id" : id,
-      "data": this.usuariosService.update(+id, body)
+  async update(@Param('id') id: string, @Body() body:any) {
+    try {
+      const result = await this.usuariosService.update(+id, body);
+      return {
+        exito: true,
+        mensaje: "Usuario actualizado correctamente",
+        id: id,
+        data: result
+      };
+    } catch (error) {
+      return {
+        exito: false,
+        mensaje: error.message
+      };
     }
   }
 

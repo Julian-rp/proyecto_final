@@ -10,8 +10,20 @@ export class RutaController {
   constructor(private readonly rutaService: RutaService) {}
 
   @Post()
-  create(@Body() body:any) {
-    return this.rutaService.create(body);
+  async create(@Body() body:any) {
+    try {
+      const result = await this.rutaService.create(body);
+      return {
+        exito: true,
+        mensaje: 'Ruta creada correctamente',
+        data: result
+      };
+    } catch (error) {
+      return {
+        exito: false,
+        mensaje: error.message
+      };
+    }
   }
 
   @Get()
@@ -26,15 +38,21 @@ export class RutaController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, 
-        @Body() body:any) {
-    return {
-      "exito" : true,
-      "mensaje" : "Actualizado correctamente ",
-      "id" : id,
-      "data": this.rutaService.update(+id, body)
-
-    };
+  async update(@Param('id') id: string, @Body() body:any) {
+    try {
+      const result = await this.rutaService.update(+id, body);
+      return {
+        exito: true,
+        mensaje: "Ruta actualizada correctamente",
+        id: id,
+        data: result
+      };
+    } catch (error) {
+      return {
+        exito: false,
+        mensaje: error.message
+      };
+    }
   }
 
   @Delete(':id')

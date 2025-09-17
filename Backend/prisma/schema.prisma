@@ -10,8 +10,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./travel_safeling.db"
+  provider = "mysql"
+  url      = "mysql://root:@localhost:3306/travel_safely"
 }
 
 model ruta {
@@ -21,7 +21,7 @@ model ruta {
   Hora_Entrada DateTime @default(now())
   Id_usuario Int
   usuario usuarios @relation(fields: [Id_usuario], references: [id_usuario])
-  asesor_ruta asesor_ruta[] // Added opposite relation field
+  asesor_ruta asesor_ruta[]
 
   ruta_servicio ruta_servicio[]
 }
@@ -40,8 +40,9 @@ model usuarios {
   Tip_usuario String
   Nom_completo String
   direccion String
-  Correo String
+  Correo String @unique
   Telefono Int
+  contrasena String
   Id_empresa Int
   empresa empresa @relation(fields: [Id_empresa], references: [id_empresa])
   ruta ruta[]
@@ -52,7 +53,8 @@ model patrocinador {
   Nombre String
   Monto_pago Int
   Metodo_pago String
-  empresa empresa @relation(fields: [Id_patrocina], references: [id_empresa])
+  Id_empresa Int
+  empresa empresa @relation(fields: [Id_empresa], references: [id_empresa])
 }
 
 model empresa {
@@ -61,8 +63,7 @@ model empresa {
   Nom_empresa String
   Direccion String
   Correo String
-  usuarios usuarios[] // Opposite relation field added
-
+  usuarios usuarios[]
   patrocinador patrocinador[]
 }  
 
@@ -85,5 +86,6 @@ model parada {
   Id_parada Int @id @default(autoincrement())
   Direccion String
   Barrio String
-  servicio servicio @relation(fields: [Id_parada], references: [Id_servicio])
+  Id_servicio Int
+  servicio servicio @relation(fields: [Id_servicio], references: [Id_servicio])
 }

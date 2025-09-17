@@ -10,10 +10,12 @@ import { AsesorRutaModule } from './asesor_ruta/asesor_ruta.module';
 import { ParadaModule } from './parada/parada.module';
 import { PatrocinadorModule } from './patrocinador/patrocinador.module';
 import { RutaServicioModule } from './ruta_servicio/ruta_servicio.module';
+import { AuthModule } from './auth/auth.module';
+import { SeedService } from './seed/seed.service';
 
 @Module({
-  imports: [RutaModule, PrismaModule, UsuariosModule, ServicioModule, EmpresaModule, AsesorRutaModule, ParadaModule, PatrocinadorModule, RutaServicioModule],
+  imports: [RutaModule, PrismaModule, UsuariosModule, ServicioModule, EmpresaModule, AsesorRutaModule, ParadaModule, PatrocinadorModule, RutaServicioModule, AuthModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, SeedService],
 })
 export class AppModule {}

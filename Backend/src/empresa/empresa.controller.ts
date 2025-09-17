@@ -2,16 +2,26 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { EmpresaService } from './empresa.service';
 import { CreateEmpresaDto } from './dto/create-empresa.dto';
 import { UpdateEmpresaDto } from './dto/update-empresa.dto';
-import { exitCode } from 'process';
 
 @Controller('empresa')
 export class EmpresaController {
-  this: any;
   constructor(private readonly empresaService: EmpresaService) {}
 
   @Post()
-  create(@Body() body: any) {
-    return this.empresaService.create(body);
+  async create(@Body() createEmpresaDto: CreateEmpresaDto) {
+    try {
+      const result = await this.empresaService.create(createEmpresaDto);
+      return {
+        exito: true,
+        mensaje: 'Empresa creada correctamente',
+        data: result
+      };
+    } catch (error) {
+      return {
+        exito: false,
+        mensaje: error.message
+      };
+    }
   }
 
   @Get()
@@ -25,13 +35,21 @@ export class EmpresaController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() body: any) {
-    return {
-      "exito": true,
-      "mensaje": "Actualizado correctamente",
-      "id": id,
-      "data": this.empresaService.update(+id, body)
-    };
+  async update(@Param('id') id: string, @Body() updateEmpresaDto: UpdateEmpresaDto) {
+    try {
+      const result = await this.empresaService.update(+id, updateEmpresaDto);
+      return {
+        exito: true,
+        mensaje: "Empresa actualizada correctamente",
+        id: id,
+        data: result
+      };
+    } catch (error) {
+      return {
+        exito: false,
+        mensaje: error.message
+      };
+    }
   }
 
   @Delete(':id')
